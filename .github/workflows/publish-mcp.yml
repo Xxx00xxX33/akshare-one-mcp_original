@@ -101,7 +101,7 @@ jobs:
 
       - name: Update server.json version
         run: |
-          jq --arg v "${{ steps.version.outputs.VERSION }}" '.version = $v | '.packages[0].version = $v' server.json > tmp && mv tmp server.json
+          jq --arg v "${{ steps.version.outputs.VERSION }}" '.version = $v | .packages[0].version = $v' server.json > tmp && mv tmp server.json
 
       - name: Login to MCP Registry
         run: ./mcp-publisher login github-oidc
