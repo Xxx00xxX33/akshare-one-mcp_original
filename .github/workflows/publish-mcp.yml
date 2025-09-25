@@ -1,8 +1,9 @@
 name: Publish to MCP Registry
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'  # Trigger on tags starting with 'v'
 
 permissions:
   contents: read
@@ -92,6 +93,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          tag_name: ${{ github.ref_name }}
           name: Release ${{ steps.version.outputs.VERSION }}
           generate_release_notes: true
 
