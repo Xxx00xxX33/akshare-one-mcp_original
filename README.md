@@ -5,6 +5,8 @@
   <a href="README_zh.md">中文</a>
 </div>
 
+<!-- mcp-name: io.github.zwldarren/akshare-one-mcp -->
+
 [![smithery badge](https://smithery.ai/badge/@zwldarren/akshare-one-mcp)](https://smithery.ai/server/@zwldarren/akshare-one-mcp)
 
 ## Overview
