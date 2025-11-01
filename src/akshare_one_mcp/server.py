@@ -149,7 +149,7 @@ def get_hist_data(
             df = df.join(temp)
     if recent_n is not None:
         df = df.tail(recent_n)
-    return df.to_json(orient="records")
+    return df.to_json(orient="records") or "[]"
 
 
 @mcp.tool
@@ -164,7 +164,7 @@ def get_realtime_data(
 ) -> str:
     """Get real-time stock market data. 'eastmoney_direct' support all A,B,H shares"""
     df = ako.get_realtime_data(symbol=symbol, source=source)
-    return df.to_json(orient="records")
+    return df.to_json(orient="records") or "[]"
 
 
 @mcp.tool
@@ -178,7 +178,7 @@ def get_news_data(
     df = ako.get_news_data(symbol=symbol, source="eastmoney")
     if recent_n is not None:
         df = df.tail(recent_n)
-    return df.to_json(orient="records")
+    return df.to_json(orient="records") or "[]"
 
 
 @mcp.tool
@@ -192,7 +192,7 @@ def get_balance_sheet(
     df = ako.get_balance_sheet(symbol=symbol, source="sina")
     if recent_n is not None:
         df = df.head(recent_n)
-    return df.to_json(orient="records")
+    return df.to_json(orient="records") or "[]"
 
 
 @mcp.tool
@@ -206,7 +206,7 @@ def get_income_statement(
     df = ako.get_income_statement(symbol=symbol, source="sina")
     if recent_n is not None:
         df = df.head(recent_n)
-    return df.to_json(orient="records")
+    return df.to_json(orient="records") or "[]"
 
 
 @mcp.tool
@@ -221,7 +221,7 @@ def get_cash_flow(
     df = ako.get_cash_flow(symbol=symbol, source=source)
     if recent_n is not None:
         df = df.head(recent_n)
-    return df.to_json(orient="records")
+    return df.to_json(orient="records") or "[]"
 
 
 @mcp.tool
@@ -230,7 +230,7 @@ def get_inner_trade_data(
 ) -> str:
     """Get company insider trading data."""
     df = ako.get_inner_trade_data(symbol, source="xueqiu")
-    return df.to_json(orient="records")
+    return df.to_json(orient="records") or "[]"
 
 
 @mcp.tool
@@ -246,7 +246,7 @@ def get_financial_metrics(
     df = ako.get_financial_metrics(symbol)
     if recent_n is not None:
         df = df.head(recent_n)
-    return df.to_json(orient="records")
+    return df.to_json(orient="records") or "[]"
 
 
 @mcp.tool
